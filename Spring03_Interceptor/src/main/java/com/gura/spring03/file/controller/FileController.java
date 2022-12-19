@@ -10,6 +10,30 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.gura.spring03.file.dto.FileDto;
 
+/*
+ * [spring mvc 파일 업로드 처리] 
+ * 1. pom.xml에 아래의 defendency가 있어야 한다.
+ * 		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+ * 2. servlet-context.xml에 MultipartResolver bean 설정이 있어야 한다.
+ * 3. MultipartFile 객체를 컨트롤러에서 받아서 사용하면 된다.
+ * 	 <!-- Multipart 폼 전송 처리를 위한 bean 설정 -->
+	<beans:bean id="multipartResolver"
+	   class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	   <beans:property name="maxUploadSize" value="102400000"/>
+	</beans:bean>   
+ * 
+ */
+
+
 @Controller
 public class FileController {
 

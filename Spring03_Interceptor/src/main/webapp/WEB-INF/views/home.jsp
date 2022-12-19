@@ -16,7 +16,9 @@
 			<li><a href="users/logout">로그아웃</a></li>
 			<li><a href="users/info">개인정보(로그인 필요)</a></li>
 			<li><a href="file/insertform">파일 업로드</a></li>
+			<li><a href="cafe/insertform">SmartEditor 테스트</a></li>
 		</ul>	
+		<img src="${pageContext.request.contextPath}/resources/images/SouthKorea.png" alt="한국" />
 		<h3>공지사항</h3>
 		<ul>
 			<!-- tmp(string type이므로 바로 출력) , noticeList(list type이므로 forEach문을 통해 출력) -->
