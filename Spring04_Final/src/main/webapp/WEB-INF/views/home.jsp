@@ -29,6 +29,7 @@
 			<li><a href="get_friends">friends</a></li>
 			<li><a href="get_users">users</a></li>
 			<li><a href="file/list">자료실 목록 보기</a></li>
+			<li><a href="cafe/list">카페 글 목록 보기</a></li>
 		</ul>
 		<h3>공지사항</h3>
 		<ul>
