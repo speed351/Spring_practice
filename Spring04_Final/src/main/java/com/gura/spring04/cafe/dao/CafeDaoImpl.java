@@ -59,4 +59,9 @@ public class CafeDaoImpl implements CafeDao{
 		session.update("cafe.update",dto);
 	}
 
+	@Override
+	public CafeDto getData(CafeDto dto) {
+		return session.selectOne("cafe.getData2",dto);
+	}
+
 }

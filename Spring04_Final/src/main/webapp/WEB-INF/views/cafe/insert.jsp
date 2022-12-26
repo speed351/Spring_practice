@@ -8,6 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<script>
+		alert("새 글이 추가되었습니다.");
+		location.href="${pageContext.request.contextPath}/cafe/list";
+	</script>
+	
 </body>
 </html>

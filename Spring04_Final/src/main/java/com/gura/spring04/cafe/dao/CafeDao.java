@@ -16,6 +16,8 @@ public interface CafeDao {
 
 	// 글정보 얻어오기
 	public CafeDto getData(int num);
+	//키워드를 활용한 글 정보 얻어오기(키워드에 부합하는 글 중 이전글, 다을글의 글번호도 얻어올 수 있도록)
+	public CafeDto getData(CafeDto dto);
 
 	// 조회수 증가 시키기
 	public void addViewCount(int num);
