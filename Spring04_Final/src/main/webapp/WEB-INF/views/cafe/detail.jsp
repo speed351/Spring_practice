@@ -203,7 +203,7 @@ pre {
 			                              <pre id="pre${tmp.num }">${tmp.content }</pre>                  
 			                           </dd>
 			                        </dl>
-			                        <form id="reForm${tmp.num }" class="animate__animated comment-form re-insert-form" action="comment_insert.do" method="post">
+			                        <form id="reForm${tmp.num }" class="animate__animated comment-form re-insert-form" action="comment_insert" method="post">
 			                           <input type="hidden" name="ref_group" value="${dto.num }"/>
 			                           <input type="hidden" name="target_id" value="${tmp.writer }"/>
 			                           <input type="hidden" name="comment_group" value="${tmp.comment_group }"/>
@@ -211,7 +211,7 @@ pre {
 			                           <button type="submit">등록</button>
 			                        </form>
 			                     <c:if test="${tmp.writer eq id }">
-			                        <form id="updateForm${tmp.num }" class="comment-form update-form" action="comment_update.do" method="post">
+			                        <form id="updateForm${tmp.num }" class="comment-form update-form" action="comment_update" method="post">
 			                           <input type="hidden" name="num" value="${tmp.num }" />
 			                           <textarea name="content">${tmp.content }</textarea>
 			                           <button type="submit">수정</button>
@@ -231,7 +231,7 @@ pre {
 			   </div>
 			
 			   <!-- 원글에 댓글을 작성할 폼 -->
-			   <form class="comment-form insert-form" action="comment_insert.do" method="post">
+			   <form class="comment-form insert-form" action="comment_insert" method="post">
 			      <!-- 원글의 글번호가 댓글의 ref_group 번호가 된다. -->
 			      <input type="hidden" name="ref_group" value="${dto.num }"/>
 			      <!-- 원글의 작성자가 댓글의 대상자가 된다. -->
@@ -247,7 +247,7 @@ pre {
 	<script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
 	<script>
 	   //클라이언트가 로그인 했는지 여부
-	   let isLogin=${ not empty id};
+	   let isLogin=${not empty id};
 	   
 	   document.querySelector(".insert-form")
 	      .addEventListener("submit", function(e){
@@ -257,7 +257,7 @@ pre {
 	            e.preventDefault();
 	            //로그인 폼으로 이동 시킨다.
 	            location.href=
-	               "${pageContext.request.contextPath}/users/loginform?url=${pageContext.request.contextPath}/cafe/detail.do?num=${dto.num}";
+	               "${pageContext.request.contextPath}/users/loginform?url=${pageContext.request.contextPath}/cafe/detail?num=${dto.num}";
 	         }
 	      });
 	   
@@ -306,7 +306,7 @@ pre {
 	            해당 페이지의 내용을 ajax 요청을 통해서 받아온다.
 	            "pageNum=xxx&num=xxx" 형식으로 GET 방식 파라미터를 전달한다. 
 	         */
-	         ajaxPromise("ajax_comment_list.do","get",
+	         ajaxPromise("ajax_comment_list","get",
 	               "pageNum="+currentPage+"&num=${dto.num}")
 	         .then(function(response){
 	            //json 이 아닌 html 문자열을 응답받았기 때문에  return response.text() 해준다.
@@ -383,7 +383,7 @@ pre {
 	               const isMove=confirm("로그인이 필요 합니다. 로그인 페이지로 이동 하시겠습니까?");
 	               if(isMove){
 	                  location.href=
-	                     "${pageContext.request.contextPath}/users/loginform?url=${pageContext.request.contextPath}/cafe/detail.do?num=${dto.num}";
+	                     "${pageContext.request.contextPath}/users/loginform?url=${pageContext.request.contextPath}/cafe/detail?num=${dto.num}";
 	               }
 	               return;
 	            }

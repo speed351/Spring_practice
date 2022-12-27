@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="file">
-   <insert id="insert" parameterType="fileDto">
+   <insert id="upload" parameterType="fileDto">
       INSERT INTO board_file
       (num, writer, title, orgFileName, saveFileName, fileSize, regdate)
       VALUES(board_file_seq.NEXTVAL, #{writer}, #{title}, 
