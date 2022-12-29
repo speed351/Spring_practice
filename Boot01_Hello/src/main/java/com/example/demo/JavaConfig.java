@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class JavaConfig {
+	//이 메소드에서 리턴되는 객체를 spring이 관리하는 bean이 되도록 한다.
+	//아래의 메소드는 xml문서에서 <bean id="myCar" class="com.example.demo.Car"/>와 같다
 	@Bean
 	public Car Car() {
 		System.out.println("myCar 메소드 호출됨");

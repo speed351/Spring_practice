@@ -83,7 +83,7 @@
 		</interceptor>
 		<interceptor>
 			<mapping path="/gallery/*"/>
-			<exclude-mapping path="/cafe/list"/>
+			<exclude-mapping path="/gallery/list"/>
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 	</interceptors>

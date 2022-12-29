@@ -32,7 +32,7 @@
 	         		<td>${tmp.caption }</td>
 	         		<td>
 		         		<a href="javascript:largeImage(${tmp.imagePath })">
-		         			<img src="${pageContext.request.contextPath}/${tmp.imagePath}" alt="" style="width:100px; height:100px;"  onclick="window.open(this.src)" />
+		         			<img src="${pageContext.request.contextPath}${tmp.imagePath}" alt="" style="width:100px; height:100px;"  onClick="window.open(this.src, 'img_popup', 'height = 500, left=0, top=0')" />
 		         		</a>
 
 	         		</td>
