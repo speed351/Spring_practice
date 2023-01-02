@@ -64,7 +64,7 @@ public class GalleryServiceImpl implements GalleryService{
 		GalleryDto dto = new GalleryDto();
 		dto.setStartRowNum(startRowNum);
 		dto.setEndRowNum(endRowNum);
-
+ 
 		// 만일 검색 키워드가 넘어온다면
 		if (!keyword.equals("")) {
 			// 검색 조건이 무엇이냐에 따라 분기 하기
@@ -189,7 +189,7 @@ public class GalleryServiceImpl implements GalleryService{
 		dto.setWriter(id); // 세션에서 읽어낸 파일 업로더의 아이디
 		dto.setOrgFileName(orgFileName);
 		dto.setSaveFileName(saveFileName);
-		dto.setImagePath("/resources/upload/"+saveFileName);
+		dto.setImagePath(saveFileName);
 		// fileDao 를 이용해서 DB 에 저장하기
 		GalleryDao.upload(dto);
 		// view 페이지에서 사용할 모델 담기
