@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +21,11 @@ public class FileServiceImpl implements FileService{
 	
 	@Autowired
 	private FileDao dao;
+	
+	
+	@Value("${file.location}")
+	private String fileLocation;
+	
 	
 	@Override
 	public void getList(HttpServletRequest request) {
@@ -118,7 +124,7 @@ public class FileServiceImpl implements FileService{
 		long fileSize = myFile.getSize();
 
 		// webapp/resources/upload 폴더 까지의 실제 경로(서버의 파일시스템 상에서의 경로)
-		String realPath = request.getServletContext().getRealPath("/resources/upload");
+		String realPath = fileLocation;
 		// 저장할 파일의 상세 경로
 		String filePath = realPath + File.separator;
 		// 디렉토리를 만들 파일 객체 생성
@@ -149,11 +155,10 @@ public class FileServiceImpl implements FileService{
 	}
 
 	@Override
-	public void getFileData(int num, ModelAndView mView) {
-		//다운로드 할 파일의 정보를 얻어와
-		FileDto dto = dao.getData(num);
-		//ModelAndView 객체에 담아준다.
-		mView.addObject("dto", dto);
+	public FileDto getFileData(int num) {
+		//다운로드 할 파일의 정보를 얻어와서 리턴
+		return dao.getData(num);
+		
 	}
 
 	@Override
@@ -170,7 +175,7 @@ public class FileServiceImpl implements FileService{
 		
 		//파일 시스템에서 삭제
 		String saveFileName = dto.getSaveFileName();
-		String path = request.getServletContext().getRealPath("resources/upload")+File.separator+saveFileName;
+		String path = fileLocation + File.separator + saveFileName;
 		
 		new File(path).delete();
 		//DB에서 파일 정보 삭제

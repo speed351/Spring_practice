@@ -8,55 +8,57 @@ import org.springframework.stereotype.Repository;
 
 import com.gura.boot07.gallery.dto.GalleryDto;
 
+
+
 @Repository
-public class GalleryDaoImpl implements GalleryDao{
-	
+public class GalleryDaoImpl implements GalleryDao {
+
 	@Autowired
 	private SqlSession session;
 	
+	/*
+	 * Mapper's namespace : gallery
+	 * sql's id : getList
+	 * parameterType : GalleryDto
+	 * resultType : GalleryDto
+	 */
+	//gallery 의 모든 리스트 가져오기
 	@Override
 	public List<GalleryDto> getList(GalleryDto dto) {
-		// TODO Auto-generated method stub
-		return session.selectList("gallery.getList",dto);
-	}
-
-	@Override
-	public int getCount(GalleryDto dto) {
-		return session.selectOne("gallery.getCount",dto);
-	}
-
-	@Override
-	public void upload(GalleryDto dto) {
-		session.insert("gallery.insert",dto);		
 		
+		return session.selectList("gallery.getList", dto);
 	}
-
+	
+	/*
+	 * Mapper's namespace : gallery
+	 * sql's id : getCount
+	 * resultType : int
+	 */
+	//row 의 총 개수 구하기
+	@Override
+	public int getCount() {
+		return session.selectOne("gallery.getCount");
+	}
+	
+	/*
+	 * Mapper's namespace : gallery
+	 * sql's id : insert
+	 * parameterType : GalleryDto
+	 */
+	@Override
+	public void insert(GalleryDto dto) {
+		session.insert("gallery.insert", dto);
+	}
+	
+	/*
+	 * Mapper's namespace : gallery
+	 * sql's id : getData
+	 * parameterType : int
+	 * resultType : GalleryDto
+	 */
 	@Override
 	public GalleryDto getData(int num) {
-		return session.selectOne("gallery.getData",num);
+		return session.selectOne("gallery.getData", num);
 	}
-
-	@Override
-	public GalleryDto getData(GalleryDto dto) {
-		return session.selectOne("gallery.getData2",dto);
-	}
-
-	@Override
-	public void addViewCount(int num) {
-		session.update("gallery.addViewCount", num);
-		
-	}
-
-	@Override
-	public void delete(int num) {
-		session.delete("gallery.delete",num);
-		
-	}
-
-	@Override
-	public void update(GalleryDto dto) {
-		session.update("gallery.update",dto);
-		
-	}
-
+	
 }
