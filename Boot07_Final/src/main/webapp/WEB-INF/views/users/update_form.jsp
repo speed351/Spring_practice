@@ -36,7 +36,7 @@
 				</c:when>
 				<c:otherwise>
 					<img id="profileImage"
-						src="${pageContext.request.contextPath }${ dto.profile}">
+						src="${pageContext.request.contextPath }/users/images/${ dto.profile}">
 				</c:otherwise>
 			</c:choose>
 		</a>
@@ -84,7 +84,7 @@
 			// input name="profile" 요소의 value 값으로 이미지 경로 넣어주기
 			document.querySelector("input[name=profile]").value = data.imagePath;
 			// img 요소를 문자열로 작성한 다음 
-			let img = `<img id="profileImage" src="${pageContext.request.contextPath }\${data.imagePath}">`;
+			let img = `<img id="profileImage" src="${pageContext.request.contextPath }/users/images/\${data.imagePath}">`;
 			//id 가 profileLink 인 요소의 내부(자식요소)에 덮어쓰기 하면서 html 형식으로 해석해 주세요 라는 의미 
 			document.querySelector("#profileLink").innerHTML = img;
 			});
