@@ -36,6 +36,11 @@ public class GalleryController {
 	//이미지 데이터가 응답되어야 한다.
 	//웹브라우저에게 이미지 데이터를 응답한다고 알려줘야 한다.
 	//응답할 이미지의 이름은 그때 그때 다르다. 경로변수(path variable)를 사용해서 처리해준다
+	// 이컨트롤러 메소드에서 응답한 byte[] 배열을 클라이언트에게 응답하는 방법
+	// 1. @ResponseBody
+	// 2. byte[] 배열 리턴
+	// 응답된 byte[]배열에 있는 데이터를 이미지 클라이언트 웹브라우저가 인식하게 하는 방법
+	// produces=MediaType.IMAGE_JPEG_VALUE
 	@GetMapping(
 		value="/gallery/images/{imageName}",
 		produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE, MediaType.IMAGE_GIF_VALUE}

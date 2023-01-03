@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<img src="${pageContext.request.contextPath}/${tmp.imagePath}" alt="" />
+	<img src="${pageContext.request.contextPath}/gallery/images/${tmp.imagePath}" alt="" />
 </body>
 </html>
