@@ -6,10 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 //로그인된 사용자인지 검사할 인터셉터
+@Component
 public class LoginInterceptor implements HandlerInterceptor{
    
    //Controller 메소드 수행직전에 로그인된 사용자 인지 검증을 해서 
@@ -39,7 +41,7 @@ public class LoginInterceptor implements HandlerInterceptor{
          
          //3. 로그인을 하지 않았다면  /users/loginform.do 페이지로 리다일렉트 이동 시킨다. (HttpServletResponse)
          String cPath=request.getContextPath();
-         response.sendRedirect(cPath+"/users/loginform?url="+encodedUrl);
+         response.sendRedirect(cPath+"/users/login_form?url="+encodedUrl);
          return false;
       }
       

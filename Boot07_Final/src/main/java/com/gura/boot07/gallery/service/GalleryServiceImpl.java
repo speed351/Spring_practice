@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,7 +22,10 @@ public class GalleryServiceImpl implements GalleryService{
 	@Autowired
 	private GalleryDao GalleryDao;
 	
-
+	@Value("${file.location}")
+	private String fileLocation;
+	
+	
 	@Override
 	public void getList(HttpServletRequest request) {
 		// 한 페이지에 몇개씩 표시할 것인지
@@ -167,7 +171,7 @@ public class GalleryServiceImpl implements GalleryService{
 		long fileSize = myFile.getSize();
 
 		// webapp/resources/upload 폴더 까지의 실제 경로(서버의 파일시스템 상에서의 경로)
-		String realPath = "C:\\data";
+		String realPath = fileLocation;
 		// 저장할 파일의 상세 경로
 		String filePath = realPath + File.separator;
 		// 디렉토리를 만들 파일 객체 생성
