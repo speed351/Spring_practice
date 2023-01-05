@@ -9,9 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gura</groupId>
-	<artifactId>Spring07_Final</artifactId>
+	<artifactId>Boot07_Final</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Boot07_Final</name>
+	<!-- war 파일 으로 빌드하겠다는 의미 -->
+	<packaging>war</packaging>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>

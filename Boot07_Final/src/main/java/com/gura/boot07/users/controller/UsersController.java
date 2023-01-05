@@ -9,6 +9,7 @@ import java.net.URLEncoder;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
@@ -70,8 +71,8 @@ public class UsersController {
 	}
 	//로그인 요청 처리
 	@RequestMapping(method = RequestMethod.POST, value = "/users/login")
-	public ModelAndView login(ModelAndView mView, UsersDto dto, String url, HttpSession session) {
-		service.loginProcess(dto, session);
+	public ModelAndView login(ModelAndView mView, UsersDto dto, String url, HttpSession session, HttpServletResponse response) {
+		service.loginProcess(dto, session, response);
 		//로그인 후 가야할 목적지 정보를 인코딩하지 않는 것과 인코딩 한 것을 모두 ModelAndView객체에 담고
 		String encodedUrl = URLEncoder.encode(url);
 		mView.addObject("url", url);
